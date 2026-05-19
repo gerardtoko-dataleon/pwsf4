@@ -1,0 +1,8 @@
+flask
+
+# — Core —
+requests==2.33.0
+python-dotenv==1.2.2 # CVE-2026-28684 1.2.2
+
+# — Tests —
+pytest==9.0.3
