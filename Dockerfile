@@ -9,15 +9,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 WORKDIR /usr/src/app
 
-RUN apt-get update && \
-    apt-get upgrade -y --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
-
 # Dépendances pip — installer AVANT le code source pour profiter du cache Docker
 COPY requirements.txt ./
-RUN pip install --no-cache-dir "pip>=26.1" "setuptools>=78.1.1" "wheel>=0.46.2" && \
-    pip install --no-cache-dir -r requirements.txt && \
-    pip uninstall -y coloredlogs verboselogs 2>/dev/null || true
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY config.py ./
 
